@@ -1,0 +1,42 @@
+<section class="login-area">
+    <div class="row m-0">
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="login-image">
+                <img src="https://picsum.photos/1200/1400" alt="image">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 p-0">
+            <div class="login-content">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="login-form">
+                            <div class="logo">
+                                <a routerLink="/"><img src="assets/img/black-logo.png" alt="image"></a>
+                            </div>
+
+                            <h3>Welcome Back</h3>
+                            <p>New user? <a routerLink="/register">Sign up</a></p>
+
+                            <form [formGroup]="loginForm" (ngSubmit)="loginHandler()">
+                                <div class="form-group">
+                                    <input type="email" placeholder="Your Email Address" class="form-control" formControlName="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" placeholder="Your Password" class="form-control" formControlName="password">
+                                </div>
+
+                                <button type="submit">Login</button>
+
+                                <!-- <div class="forgot-password">
+                                    <a routerLink="/">Forgot Password?</a>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

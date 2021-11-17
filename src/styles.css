@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+/*# sourceMappingURL=styles.css.map */
+
+input.ng-invalid.ng-touched{
+    border: 0.3px solid #ea0e23 !important;
+}

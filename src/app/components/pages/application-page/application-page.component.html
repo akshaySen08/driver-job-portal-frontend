@@ -1,0 +1,294 @@
+<app-header-one></app-header-one>
+<!-- <app-header-two></app-header-two> -->
+<div class="page-title-area page-title-bg3">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Fill Job Application</h2>
+        </div>
+    </div>
+</div>
+
+<section class="about-area ptb-100">
+    <div class="container" *ngIf="activeFormIndex == 0 ">
+        <div class="add-listing-box mb-30">
+            <h3>Basic Informations</h3>
+
+            <form [formGroup]="activeForm">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> First Name:</label>
+                            <input type="text" class="form-control" placeholder="Legal First Name" formControlName="first_name">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> Last Name:</label>
+                            <input type="text" class="form-control" placeholder="Legal Last Name" formControlName="last_name">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-calendar'></i> Date of Birth:</label>
+                            <input type="date" class="form-control" formControlName="dob">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-calendar'></i> Nationality:</label>
+                            <input type="text" class="form-control" formControlName="nationality">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-phone-call'></i> Phone Number:</label>
+                            <input type="text" class="form-control" placeholder="Phone number" formControlName="phone_number">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-phone-call'></i> Whatsapp Number:</label>
+                            <input type="text" class="form-control" placeholder="Whatsapp number" formControlName="whatsapp_number">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-phone-call'></i> Emergency Phone Number:</label>
+                            <input type="text" class="form-control" placeholder="Emergency Phone number" formControlName="emergency_phone_number">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bxs-envelope'></i> Email:</label>
+                            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label><i class='bx bx-location-plus'></i> Address:</label>
+                            <input type="text" class="form-control" placeholder="Leagal Address" formControlName="address">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label><i class='bx bx-text'></i> About you:</label>
+                            <textarea formControlName="about_you" class="form-control" id="" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label><i class='bx bxs-car'></i> Applying For:</label>
+                            <div class="row">
+                                <div class="add-list-media-header">
+                                    <label class="radio">
+                                        <input type="radio" formControlName="applying_for" value="1" checked>
+                                        <span>Car</span>
+                                    </label>
+                                </div>
+                                <div class="add-list-media-header">
+                                    <label class="radio">
+                                        <input type="radio" formControlName="applying_for" value="2" checked>
+                                        <span>Bike</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(1)">Next <i class='bx bx-right-arrow-alt'></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container" *ngIf="activeFormIndex == 1 ">
+        <div class="add-listing-box mb-30">
+            <h3>Documents Required</h3>
+
+            <form [formGroup]="activeForm">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> Pasport Copy:</label>
+                            <input type="file" class="form-control" formControlName="passport_copy" (change)="imageHandler($event, 'passport_copy')">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> Photo:</label>
+                            <input type="file" class="form-control" formControlName="photo" (change)="imageHandler($event, 'photo')">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> Driving Liscense:</label>
+                            <input type="file" class="form-control" formControlName="driver_liscense" (change)="imageHandler($event, 'driver_liscense')">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> Driving Liscense GCC:</label>
+                            <input type="file" class="form-control" formControlName="driver_liscense_gcc" (change)="imageHandler($event, 'driver_liscense_gcc')">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> CV:</label>
+                            <input type="file" class="form-control" formControlName="cv" (change)="imageHandler($event, 'cv')">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> Driving Video:</label>
+                            <input type="file" class="form-control" formControlName="driving_video" (change)="imageHandler($event, 'driving_video')">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(0)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(2)">Next <i class='bx bx-right-arrow-alt'></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="activeFormIndex == 2 ">
+
+        <div class="add-listing-box mb-30">
+            <h3>Answer Questions</h3>
+
+            <form [formGroup]="activeForm">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <div class="sidebar-widgets">
+                                <div class="box">
+                                    <span class="title">1. Do you have any chronic illness ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="cronic_illness" [(ngModel)]="dataObject['cronic_illness']">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">2. Do you wear eyeglasses ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="eyeglasses">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">2. Do you speak english ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="speak_english">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">3. Do you have gulf experience ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="gulf_exp">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">3 a. If yes, Please enter number of years ?</span>
+                                    <label class="switch">
+                                        <input type="text" formControlName="gulf_exp_num">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">4. Do you have siblings in Qatar ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="siblings_in_qatar">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">5. Your religion ?</span>
+                                    <label class="switch">
+                                        <input type="text" formControlName="religion">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">6. Do you have siblings in Qatar ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="siblings_in_qatar">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(2)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(3)">Payment <i class='bx bx-right-arrow-alt'></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- <div class="add-listing-box mb-30">
+            <h3>Important Questions</h3>
+
+            <form [formGroup]="activeForm">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label><i class='bx bx-briefcase-alt'></i> First Name:</label>
+                            <input type="text" class="form-control" placeholder="Legal First Name" formControlName="cronic_illness">
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12">
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(1)">Next <i class='bx bx-right-arrow-alt'></i></button>
+                    </div>
+                </div>
+            </form>
+        </div> -->
+    </div>
+
+    <div class="container" *ngIf="activeFormIndex == 3 ">
+
+        <div class="add-listing-box mb-30">
+            <h3>Answer Questions</h3>
+
+            <form [formGroup]="activeForm">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bxs-envelope'></i> Pay:</label>
+                                <input type="text" class="form-control" placeholder="Pay" formControlName="p">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label><i class='bx bx-location-plus'></i> Pay:</label>
+                                <input type="text" class="form-control" placeholder="Pay" formControlName="a">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(2)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(3)">Submit <i class='bx bx-right-arrow-alt'></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
