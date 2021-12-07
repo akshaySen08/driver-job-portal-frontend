@@ -21,7 +21,7 @@ export class AuthService {
         return this.httpClient.post(`${this.apiUrl}/auth/login`, data).pipe(
             tap(user => {
                 if (user['success']) {
-                    localStorage.setItem('user', JSON.stringify(user))
+                    localStorage.setItem('user', JSON.stringify(user['response']))
                     this.setUser();
                 }
             })

@@ -175,7 +175,7 @@
                                 <div class="box">
                                     <span class="title">1. Do you have any chronic illness ?</span>
                                     <label class="switch">
-                                        <input type="checkbox" formControlName="cronic_illness" [(ngModel)]="dataObject['cronic_illness']">
+                                        <input type="checkbox" formControlName="cronic_illness">
                                         <span></span>
                                     </label>
                                 </div>
@@ -202,8 +202,8 @@
                                 </div>
                                 <div class="box">
                                     <span class="title">3 a. If yes, Please enter number of years ?</span>
-                                    <label class="switch">
-                                        <input type="text" formControlName="gulf_exp_num">
+                                    <label class="text">
+                                        <input type="text" formControlName="gulf_exp_num" class="form-control">
                                         <span></span>
                                     </label>
                                 </div>
@@ -216,8 +216,8 @@
                                 </div>
                                 <div class="box">
                                     <span class="title">5. Your religion ?</span>
-                                    <label class="switch">
-                                        <input type="text" formControlName="religion">
+                                    <label class="text">
+                                        <input type="text" formControlName="religion" class="form-control">
                                         <span></span>
                                     </label>
                                 </div>
@@ -228,11 +228,25 @@
                                         <span></span>
                                     </label>
                                 </div>
+                                <div class="box">
+                                    <span class="title">6. Do you smoke ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="smoke">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="box">
+                                    <span class="title">6. Do you drink ?</span>
+                                    <label class="switch">
+                                        <input type="checkbox" formControlName="drink">
+                                        <span></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(2)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button  type="button" class="application-btn" (click)="handleNextPrevious(1)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
                         <button  type="button" class="application-btn" (click)="handleNextPrevious(3)">Payment <i class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>

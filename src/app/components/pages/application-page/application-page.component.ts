@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ApplicationService } from "../../services/application.service";
 
 @Component({
     selector: 'app-applcication-page',
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class ApplicationPageComponent implements OnInit {
 
     constructor(
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private applicationService: ApplicationService
     ) { }
 
     formIndexes = [0, 1, 2, 3]; // 0
@@ -98,6 +100,8 @@ export class ApplicationPageComponent implements OnInit {
             Data: this.dataObject
         });
 
+        this.submit();
+
     }
 
     imageHandler(event: any, type) {
@@ -120,5 +124,26 @@ export class ApplicationPageComponent implements OnInit {
             uploads: this.uploads
         });
 
+    }
+
+    submit() {
+        console.log({
+            data : this.dataObject
+        });
+
+        const formData = new FormData();
+
+        for (const key in this.dataObject) {
+            formData.append(key, this.dataObject[key])
+        }
+
+        this.applicationService.submitApplication(formData).subscribe(
+            appRes => {
+                console.log({
+                    appRes
+                });
+
+            }
+        )
     }
 }
