@@ -34,6 +34,7 @@ import { ComingSoonComponent } from './components/pages/coming-soon/coming-soon.
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { ApplicationPageComponent } from './components/pages/application-page/application-page.component';
+import { ApplicationResolver } from './components/resolvers/application.resolver';
 
 const routes: Routes = [
     { path: '', component: HomeTwoComponent },
@@ -44,7 +45,13 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'contact', component: ContactComponent },
 
-    { path: 'application-page', component: ApplicationPageComponent },
+    {
+        path: 'application-page',
+        component: ApplicationPageComponent,
+        resolve: {
+            data: ApplicationResolver
+        }
+    },
 
     { path: '**', component: ErrorComponent }
 ];

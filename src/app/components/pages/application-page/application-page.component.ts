@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ApplicationService } from "../../services/application.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'app-applcication-page',
@@ -11,12 +12,45 @@ export class ApplicationPageComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private applicationService: ApplicationService
-    ) { }
+        private applicationService: ApplicationService,
+        private authService: AuthService
+    ) {
+
+    }
 
     formIndexes = [0, 1, 2, 3]; // 0
     activeFormIndex = 0
     activeForm: FormGroup;
+
+    user: any = {
+        about_you: null,
+        address: null,
+        application_status: null,
+        applying_for: null,
+        cronic_illness: null,
+        cv: null,
+        dob: null,
+        drink: null,
+        driver_liscense: null,
+        driver_liscense_gcc: null,
+        driving_video: null,
+        email: null,
+        emergency_phone_number: null,
+        eyeglasses: null,
+        first_name: null,
+        gulf_exp: null,
+        gulf_exp_num: null,
+        last_name: null,
+        nationality: null,
+        passport_copy: null,
+        phone_number: null,
+        photo: null,
+        religion: null,
+        siblings_in_qatar: null,
+        smoke: null,
+        speak_english: null,
+        whatsapp_number: null,
+    };
 
     /* uploads */
     uploads = {
@@ -28,61 +62,63 @@ export class ApplicationPageComponent implements OnInit {
         cv: '',
     }
 
-    formObject = [
-        {
-            first_name: ['', Validators.required],
-            last_name: ['', Validators.required],
-            dob: ['', Validators.required],
-            nationality: ['', Validators.required],
-            phone_number: ['', Validators.required],
-            whatsapp_number: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            emergency_phone_number: ['', Validators.required],
-            about_you: ['', Validators.required],
-            applying_for: ['', Validators.required],
-            address: ['', Validators.required],
-        },
-        {
+    dataObject = {};
+
+    ngOnInit() {
+
+        // write login for filling the form using this.dataObject
+        this.initializeForm(this.user)
+        this.authService.user$.subscribe(usr => {
+            console.log({
+                usr
+            });
+            debugger
+            this.user = usr
+            this.initializeForm(this.user)
+        })
+
+    }
+
+    /* Basic info form */
+    initializeForm(data: any) {
+
+        // for (const key in this.formObject[this.activeFormIndex]) {
+        //     this.formObject[this.activeFormIndex][key] = this.user[key]
+        // }
+        // debugger
+        this.activeForm = this.fb.group({
+            first_name: [data?.first_name, Validators.required],
+            last_name: [data?.last_name, Validators.required],
+            dob: [data?.dob, Validators.required],
+            nationality: [data?.nationality, Validators.required],
+            phone_number: [data?.phone_number, Validators.required],
+            whatsapp_number: [data?.whatsapp_number, Validators.required],
+            email: [data?.email, [Validators.required, Validators.email]],
+            emergency_phone_number: [data?.emergency_phone_number, Validators.required],
+            about_you: [data?.about_you, Validators.required],
+            applying_for: [data?.applying_for, Validators.required],
+            address: [data?.address, Validators.required],
+
             passport_copy: ['', Validators.required],
             driving_video: ['', Validators.required],
             photo: ['', Validators.required],
             driver_liscense: ['', Validators.required],
             driver_liscense_gcc: ['', Validators.required],
             cv: ['', Validators.required],
-        },
-        {
-            cronic_illness: [false, Validators.required],
-            eyeglasses: [false, Validators.required],
-            speak_english: [false, Validators.required],
-            gulf_exp: [false, Validators.required],
-            gulf_exp_num: [0, Validators.required],
-            siblings_in_qatar: [false, Validators.required],
-            religion: ['', Validators.required],
-            smoke: [false, Validators.required],
-            drink: [false, Validators.required],
-        },
-        {
-            p: ['', Validators.required],
-            a: ['', Validators.required],
-            y: ['', Validators.required],
-        }
-    ]
 
-    dataObject = {};
-
-    ngOnInit() {
-        this.initializeForm(this.formObject[this.activeFormIndex])
-        // write login for filling the form using this.dataObject
-        // for (const key in this.formObject[this.activeFormIndex]) {
-        //     this.formObject[this.activeFormIndex][key] = this.dataObject[key]
-        // }
-
-
-    }
-
-    /* Basic info form */
-    initializeForm(data: Object) {
-        this.activeForm = this.fb.group(data)
+            cronic_illness: [data?.cronic_illness, Validators.required],
+            eyeglasses: [data?.eyeglasses, Validators.required],
+            speak_english: [data?.speak_english, Validators.required],
+            gulf_exp: [data?.gulf_exp, Validators.required],
+            gulf_exp_num: [data?.gulf_exp_num, Validators.required],
+            siblings_in_qatar: [data?.siblings_in_qatar, Validators.required],
+            religion: [data?.religion, Validators.required],
+            smoke: [data?.smoke, Validators.required],
+            drink: [data?.drink, Validators.required],
+            p: [data?.p, Validators.required],
+            a: [data?.a, Validators.required],
+            y: [data?.y, Validators.required],
+        })
     }
 
 
@@ -94,7 +130,8 @@ export class ApplicationPageComponent implements OnInit {
         }
 
         this.activeFormIndex = index;
-        this.initializeForm(this.formObject[this.activeFormIndex]);
+        this.initializeForm(this.user);
+        debugger
 
         console.log({
             Data: this.dataObject
@@ -128,7 +165,7 @@ export class ApplicationPageComponent implements OnInit {
 
     submit() {
         console.log({
-            data : this.dataObject
+            data: this.dataObject
         });
 
         const formData = new FormData();
@@ -137,13 +174,17 @@ export class ApplicationPageComponent implements OnInit {
             formData.append(key, this.dataObject[key])
         }
 
-        this.applicationService.submitApplication(formData).subscribe(
+        this.applicationService.submitApplication(formData, this.user._id).subscribe(
             appRes => {
                 console.log({
                     appRes
                 });
-
             }
         )
+    }
+
+
+    handlepay() {
+        window.location.href = "http://localhost/check-sadad/sadad.php"
     }
 }

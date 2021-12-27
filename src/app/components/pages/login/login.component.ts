@@ -21,12 +21,11 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
     ngOnInit(): void {
-        this.authService.user$.subscribe(userDetails => {
-            if (userDetails['token']) {
-                this.router.navigate(['/application-page'])
-            }
-        })
 
+        let user = JSON.parse(localStorage.getItem('user'))
+        if (user && user['token']) {
+            this.router.navigate(['/application-page'])
+        }
         this.initializeForm();
     }
 
@@ -44,12 +43,21 @@ export class LoginComponent implements OnInit {
             return this.toastMessageService.showMessage('error', 'Please enter details properly')
         }
 
-        this.authService.login(this.loginForm.getRawValue()).subscribe(
-            res => {
-                if(res['success']) {
-                    this.router.navigate(['/application-page'])
+        try {
+            this.authService.login(this.loginForm.getRawValue()).subscribe(
+                res => {
+                    debugger
+                    if (res['success']) {
+                        this.router.navigate(['/application-page'])
+                    } else {
+                        alert(res['message'])
+                        this.toastMessageService.showMessage('error', res['message'])
+                    }
                 }
-            }
-        )
+            )
+
+        } catch (error) {
+            console.log({ error });
+        }
     }
 }

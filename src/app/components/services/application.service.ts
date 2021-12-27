@@ -10,8 +10,15 @@ export class ApplicationService {
 
     apiUrl = environment.apiUrl;
 
-    submitApplication(data: FormData): Observable<any> {
-        const user = JSON.parse(localStorage.getItem('user'))
-        return this.httpClient.post(`${this.apiUrl}/application/submit-application/${user._id}`, data);
+    submitApplication(data: FormData, userId): Observable<any> {
+        return this.httpClient.post(`${this.apiUrl}/application/submit-application/${userId}`, data);
+    }
+
+    getApplicantDetails(userId) {
+        return this.httpClient.get(`${this.apiUrl}/application/applicant-details/${userId}`);
+    }
+
+    getUser() {
+        return JSON.parse(localStorage.getItem('user'))
     }
 }
