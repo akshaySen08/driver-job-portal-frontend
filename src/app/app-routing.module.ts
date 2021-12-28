@@ -35,6 +35,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { ApplicationPageComponent } from './components/pages/application-page/application-page.component';
 import { ApplicationResolver } from './components/resolvers/application.resolver';
+import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
 
 const routes: Routes = [
     { path: '', component: HomeTwoComponent },
@@ -52,7 +53,10 @@ const routes: Routes = [
             data: ApplicationResolver
         }
     },
-
+    {
+        path: 'thank-you',
+        component: ThankYouComponent
+    },
     { path: '**', component: ErrorComponent }
 ];
 
