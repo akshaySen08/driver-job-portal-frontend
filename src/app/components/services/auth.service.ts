@@ -5,13 +5,14 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ApplicationService } from './application.service';
 import { ToastMessagesService } from './toast-messages.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     constructor(
         private httpClient: HttpClient,
-        private applicationService: ApplicationService,
-        private toastService: ToastMessagesService
+        private toastService: ToastMessagesService,
+        private router: Router
     ) { }
 
     apiUrl = environment.apiUrl;
@@ -38,7 +39,7 @@ export class AuthService {
 
     public setUser() {
         let user = JSON.parse(localStorage.getItem('user'));
-        this.applicationService.getApplicantDetails(user._id).subscribe(
+        this.getApplicantDetails(user._id).subscribe(
             usrDetails => {
                 if (usrDetails['success']) {
                     this.user$.next(usrDetails['response'])
@@ -55,8 +56,17 @@ export class AuthService {
         return this.user$;
     }
 
+    getApplicantDetails(userId) {
+        return this.httpClient.get(`${this.apiUrl}/application/applicant-details/${userId}`);
+    }
 
     checkUserOrLogout() {
 
+    }
+
+    logout() {
+        localStorage.removeItem('user');
+        this.router.navigate(['/'])
+        this.user$.next({})
     }
 }

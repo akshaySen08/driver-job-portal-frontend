@@ -28,13 +28,23 @@
                             <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
                         </ul>
 
-                        <div class="others-option">
+                        <div class="others-option" *ngIf="!user">
                             <div class="d-flex align-items-center">
                                 <div class="option-item">
                                     <a href="/login" class="default-btn"><i class="bx bx-log-in"></i> Login</a>
                                 </div>
                                 <div class="option-item">
                                     <a href="/register" class="default-btn"><i class="bx bx-log-in-circle"></i> Register</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="others-option" *ngIf="user">
+                            <div class="d-flex align-items-center">
+                                <div class="option-item">
+                                    <a (click)="logout()" class="default-btn"><i class="bx bx-log-in"></i> Logout</a>
+                                </div>
+                                <div class="option-item">
+                                    <a href="/application-page" class="default-btn"><i class="bx bx-log-in-circle"></i> My Account</a>
                                 </div>
                             </div>
                         </div>

@@ -38,13 +38,41 @@ import { ApplicationResolver } from './components/resolvers/application.resolver
 import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
 
 const routes: Routes = [
-    { path: '', component: HomeTwoComponent },
-    { path: 'home-two', component: HomeTwoComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'coming-soon', component: ComingSoonComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'contact', component: ContactComponent },
+    {
+        path: '', component: HomeTwoComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
+    {
+        path: 'home-two', component: HomeTwoComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
+    {
+        path: 'about', component: AboutComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
+    {
+        path: 'coming-soon', component: ComingSoonComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
+    {
+        path: 'login', component: LoginComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
+    {
+        path: 'register', component: RegisterComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
+    {
+        path: 'contact', component: ContactComponent, resolve: {
+            data: ApplicationResolver
+        }
+    },
 
     {
         path: 'application-page',

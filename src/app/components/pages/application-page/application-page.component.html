@@ -10,23 +10,24 @@
 
 <section class="about-area ptb-100">
 
-    <div class="container" >
+    <div class="container">
         <div class="add-listing-box mb-30">
-            <form [formGroup]="activeForm">
-
-                <div class="row" *ngIf="activeFormIndex == 0 ">
+            <form [formGroup]="basicInfoForm" *ngIf="activeFormIndex == 0 ">
+                <div class="row">
                     <h3>Basic Informations</h3>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> First Name:</label>
-                            <input type="text" class="form-control" placeholder="Legal First Name" formControlName="first_name">
+                            <input type="text" class="form-control" placeholder="Legal First Name"
+                                formControlName="first_name">
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Last Name:</label>
-                            <input type="text" class="form-control" placeholder="Legal Last Name" formControlName="last_name">
+                            <input type="text" class="form-control" placeholder="Legal Last Name"
+                                formControlName="last_name">
                         </div>
                     </div>
 
@@ -47,21 +48,24 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Phone Number:</label>
-                            <input type="text" class="form-control" placeholder="Phone number" formControlName="phone_number">
+                            <input type="text" class="form-control" placeholder="Phone number"
+                                formControlName="phone_number">
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Whatsapp Number:</label>
-                            <input type="text" class="form-control" placeholder="Whatsapp number" formControlName="whatsapp_number">
+                            <input type="text" class="form-control" placeholder="Whatsapp number"
+                                formControlName="whatsapp_number">
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Emergency Phone Number:</label>
-                            <input type="text" class="form-control" placeholder="Emergency Phone number" formControlName="emergency_phone_number">
+                            <input type="text" class="form-control" placeholder="Emergency Phone number"
+                                formControlName="emergency_phone_number">
                         </div>
                     </div>
 
@@ -75,24 +79,27 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-location-plus'></i> Address:</label>
-                            <input type="text" class="form-control" placeholder="Leagal Address" formControlName="address">
+                            <input type="text" class="form-control" placeholder="Leagal Address"
+                                formControlName="address">
                         </div>
                     </div>
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label><i class='bx bx-text'></i> About you:</label>
-                            <textarea formControlName="about_you" class="form-control" id="" cols="30" rows="3"></textarea>
+                            <textarea formControlName="about_you" class="form-control" id="" cols="30"
+                                rows="3"></textarea>
                         </div>
                     </div>
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label><i class='bx bxs-car'></i> Applying For: {{ user.applying_for == 1 ? "Car" : "Bike" }}</label>
+                            <label><i class='bx bxs-car'></i> Applying For: {{ user?.applying_for == 1 ? "Car" : "Bike"
+                                }}</label>
                             <div class="row">
                                 <div class="add-list-media-header">
                                     <label class="radio">
-                                        <input type="radio" formControlName="applying_for" value="1" checked>
+                                        <input type="radio" formControlName="applying_for" value="1">
                                         <span>Car</span>
                                     </label>
                                 </div>
@@ -106,58 +113,90 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(1)">Next <i class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="submitBasicForm()">Next <i
+                                class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
+            </form>
 
-                <div class="row" *ngIf="activeFormIndex == 1 ">
+            <form [formGroup]="docsForm" *ngIf="activeFormIndex == 1 ">
+                <div class="row">
                     <h3>Documents Required</h3>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Pasport Copy:</label>
-                            <input type="file" class="form-control" formControlName="passport_copy" (change)="imageHandler($event, 'passport_copy')">
-                            <div class="upload-container">
-                                <img [src]="" alt="" srcset="">
+                            <input type="file" class="form-control" formControlName="passport_copy"
+                                (change)="imageHandler($event, 'passport_copy')">
+                            <div class="upload-container" *ngIf="user.passport_copy">
+                                <img [src]="imageUrl +'/'+ user.passport_copy" alt="" srcset="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Photo:</label>
-                            <input type="file" class="form-control" formControlName="photo" (change)="imageHandler($event, 'photo')">
+                            <input type="file" class="form-control" formControlName="photo"
+                                (change)="imageHandler($event, 'photo')">
+                            <div class="upload-container" *ngIf="user.photo">
+                                <img [src]="imageUrl +'/'+ user.photo" alt="" srcset="">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Driving Liscense:</label>
-                            <input type="file" class="form-control" formControlName="driver_liscense" (change)="imageHandler($event, 'driver_liscense')">
+                            <input type="file" class="form-control" formControlName="driver_liscense"
+                                (change)="imageHandler($event, 'driver_liscense')">
+                            <div class="upload-container" *ngIf="user.driver_liscense">
+                                <img [src]="imageUrl +'/'+ user.driver_liscense" alt="" srcset="">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Driving Liscense GCC:</label>
-                            <input type="file" class="form-control" formControlName="driver_liscense_gcc" (change)="imageHandler($event, 'driver_liscense_gcc')">
+                            <input type="file" class="form-control" formControlName="driver_liscense_gcc"
+                                (change)="imageHandler($event, 'driver_liscense_gcc')">
+                            <div class="upload-container" *ngIf="user.driver_liscense_gcc">
+                                <img [src]="imageUrl +'/'+ user.driver_liscense_gcc" alt="" srcset="">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> CV:</label>
-                            <input type="file" class="form-control" formControlName="cv" (change)="imageHandler($event, 'cv')">
+                            <input type="file" class="form-control" formControlName="cv"
+                                (change)="imageHandler($event, 'cv')">
+                            <div class="upload-container" *ngIf="user.cv">
+                                <img [src]="imageUrl +'/'+ user.cv" alt="" srcset="">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Driving Video:</label>
-                            <input type="file" class="form-control" formControlName="driving_video" (change)="imageHandler($event, 'driving_video')">
+                            <input type="file" class="form-control" formControlName="driving_video"
+                                (change)="imageHandler($event, 'driving_video')">
+                            <div class="upload-container" *ngIf="user.driving_video">
+                                <video width="320" height="240" controls>
+                                    <source [src]="imageUrl +'/'+ user.driving_video" type="video/mp4">
+                                    <source [src]="imageUrl +'/'+ user.driving_video" type="video/ogg">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(0)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(2)">Next <i class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
+                                class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button type="button" class="application-btn" (click)="submitDocsForm()">Next <i
+                                class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
+            </form>
 
-                <div class="row" *ngIf="activeFormIndex == 2 ">
+            <form [formGroup]="quesForm" *ngIf="activeFormIndex == 2 ">
+                <div class="row">
                     <h3>Important Questions</h3>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
@@ -216,6 +255,7 @@
                                     <label class="switch">
                                         <input type="checkbox" formControlName="siblings_in_qatar">
                                         <span></span>
+
                                     </label>
                                 </div>
                                 <div class="box">
@@ -236,23 +276,30 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(1)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(3)">Payment <i class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
+                                class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button type="button" class="application-btn" (click)="submitQuesForm()">Payment <i
+                                class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
+            </form>
 
-                <div class="row" *ngIf="activeFormIndex == 3 ">
+            <form [formGroup]="basicInfoForm" *ngIf="activeFormIndex == 3 ">
+                <div class="row">
                     <div class="col-lg-12 col-md-12">
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label><i class='bx bxs-envelope'></i> We will change 150 QAR for submitting the application, please click on continue to pay.</label>
+                                <label><i class='bx bxs-envelope'></i> We will change 150 QAR for submitting the
+                                    application, please click on continue to pay.</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <button  type="button" class="application-btn" (click)="handleNextPrevious(2)"><i class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button  type="button" class="application-btn" (click)="handlepay()">Continue <i class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
+                                class='bx bx-left-arrow-alt'></i> Previous </button>
+                        <button type="button" class="application-btn" (click)="handlepay()">Continue <i
+                                class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
             </form>

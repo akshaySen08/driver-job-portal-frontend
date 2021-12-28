@@ -54,6 +54,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationPageComponent } from './components/pages/application-page/application-page.component';
+import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { ApplicationPageComponent } from './components/pages/application-page/ap
     ErrorComponent,
     ComingSoonComponent,
     AboutComponent,
-    ApplicationPageComponent
+    ApplicationPageComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

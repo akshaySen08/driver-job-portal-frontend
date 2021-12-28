@@ -87,7 +87,7 @@
                             <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
                         </ul>
 
-                        <div class="others-option">
+                        <div class="others-option" *ngIf="!user">
                             <div class="d-flex align-items-center">
                                 <div class="option-item">
                                     <a class="top-links" routerLink="/login"><i class='bx bx-log-in'></i> Login</a>
@@ -98,6 +98,16 @@
                                 </div>
                                 <div class="option-item">
                                     <a class="top-links" routerLink="/login"><i class='bx bxs-user'></i> My Account</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="others-option" *ngIf="user">
+                            <div class="d-flex align-items-center">
+                                <div class="option-item">
+                                    <a class="top-links" (click)="logout()"><i class='bx bx-log-in'></i> Logout</a>
+                                </div>
+                                <div class="option-item">
+                                    <a class="top-links" routerLink="/application-page"><i class='bx bxs-user'></i> My Account</a>
                                 </div>
                             </div>
                         </div>

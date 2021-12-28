@@ -46,11 +46,9 @@ export class LoginComponent implements OnInit {
         try {
             this.authService.login(this.loginForm.getRawValue()).subscribe(
                 res => {
-                    debugger
                     if (res['success']) {
                         this.router.navigate(['/application-page'])
                     } else {
-                        alert(res['message'])
                         this.toastMessageService.showMessage('error', res['message'])
                     }
                 }
