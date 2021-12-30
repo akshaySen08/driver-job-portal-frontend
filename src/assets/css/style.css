@@ -4422,38 +4422,6 @@ Listing Categories Area CSS
   top: 1px;
 }
 
-.single-categories-listing-item.bg1 {
-  background-image: url(../../assets/img/categories/img1.jpg);
-}
-
-.single-categories-listing-item.bg2 {
-  background-image: url(../../assets/img/categories/img2.jpg);
-}
-
-.single-categories-listing-item.bg3 {
-  background-image: url(../../assets/img/categories/img3.jpg);
-}
-
-.single-categories-listing-item.bg4 {
-  background-image: url(../../assets/img/categories/img4.jpg);
-}
-
-.single-categories-listing-item.bg5 {
-  background-image: url(../../assets/img/categories/img5.jpg);
-}
-
-.single-categories-listing-item.bg6 {
-  background-image: url(../../assets/img/categories/img6.jpg);
-}
-
-.single-categories-listing-item.bg7 {
-  background-image: url(../../assets/img/categories/img7.jpg);
-}
-
-.single-categories-listing-item.bg8 {
-  background-image: url(../../assets/img/categories/img8.jpg);
-}
-
 .single-categories-listing-item:hover, .single-categories-listing-item:focus {
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
@@ -7697,17 +7665,7 @@ Widget Sidebar CSS
   background-position: center center !important;
 }
 
-.widget-area .widget_louise_posts_thumb .item .thumb .fullimage.bg1 {
-  background-image: url(../../assets/img/blog/img7.jpg);
-}
 
-.widget-area .widget_louise_posts_thumb .item .thumb .fullimage.bg2 {
-  background-image: url(../../assets/img/blog/img8.jpg);
-}
-
-.widget-area .widget_louise_posts_thumb .item .thumb .fullimage.bg3 {
-  background-image: url(../../assets/img/blog/img5.jpg);
-}
 
 .widget-area .widget_louise_posts_thumb .item .thumb::before, .widget-area .widget_louise_posts_thumb .item .thumb::after {
   -webkit-transition: all 0.8s cubic-bezier(0.2, 1, 0.22, 1);
@@ -8740,7 +8698,7 @@ Login Area CSS
 .login-image {
   height: 100%;
   width: 100%;
-  background-image: url(../../assets/img/login-bg.jpg);
+  /* background-image: url(../../assets/img/login-bg.jpg); */
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8943,7 +8901,7 @@ Register Area CSS
 .register-image {
   height: 100%;
   width: 100%;
-  background-image: url(../../assets/img/register-bg.jpg);
+  /* background-image: url(../../assets/img/register-bg.jpg); */
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

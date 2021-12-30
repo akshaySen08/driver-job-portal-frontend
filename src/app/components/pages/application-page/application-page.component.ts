@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { environment } from "src/environments/environment";
 import { ApplicationService } from "../../services/application.service";
 import { AuthService } from "../../services/auth.service";
+import { ToastMessagesService } from "../../services/toast-messages.service";
 
 @Component({
     selector: 'app-applcication-page',
@@ -14,7 +15,8 @@ export class ApplicationPageComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private applicationService: ApplicationService,
-        private authService: AuthService
+        private authService: AuthService,
+        private toast: ToastMessagesService
     ) {
 
     }
@@ -74,6 +76,8 @@ export class ApplicationPageComponent implements OnInit {
                 if (res['success']) {
                     this.activeFormIndex++
                     this.formInitialization();
+                } else {
+                    this.toast.showMessage('error', res['message'])
                 }
             }
         )
@@ -98,9 +102,13 @@ export class ApplicationPageComponent implements OnInit {
 
         this.applicationService.submitDocs(formData, this.user._id).subscribe(
             res => {
-                console.log({res});
-                this.activeFormIndex++
-                this.formInitialization();
+                if (res['success']) {
+                    console.log({ res });
+                    this.activeFormIndex++
+                    this.formInitialization();
+                } else {
+                    this.toast.showMessage('error', res['message'])
+                }
             }
         )
     }
@@ -120,12 +128,16 @@ export class ApplicationPageComponent implements OnInit {
         })
     }
 
-    submitQuesForm(){
+    submitQuesForm() {
         this.applicationService.submitBasicInfo(this.quesForm.getRawValue(), this.user._id).subscribe(
             res => {
-                console.log({res});
-                this.activeFormIndex++
-                this.formInitialization();
+                if (res['success']) {
+                    console.log({ res });
+                    this.activeFormIndex++
+                    this.formInitialization();
+                } else {
+                    this.toast.showMessage('error', res['message'])
+                }
             }
         )
     }
@@ -135,13 +147,11 @@ export class ApplicationPageComponent implements OnInit {
         next ? this.activeFormIndex++ : this.activeFormIndex--
     }
 
+    uploadsEmpty: boolean;
     imageHandler(event: any, type) {
         console.log(event.target.files[0]);
         this.uploads[type] = event.target.files[0]
-        const isNotEmpty = Object.values(this.uploads).every(x => x !== null && x !== '');
-        if (isNotEmpty) {
-
-        }
+        this.uploadsEmpty = Object.values(this.uploads).some(x => x == null && x == '');
     }
 
 

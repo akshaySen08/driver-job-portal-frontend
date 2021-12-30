@@ -39,15 +39,20 @@ export class AuthService {
 
     public setUser() {
         let user = JSON.parse(localStorage.getItem('user'));
-        this.getApplicantDetails(user._id).subscribe(
-            usrDetails => {
-                if (usrDetails['success']) {
-                    this.user$.next(usrDetails['response'])
-                } else {
-                    this.toastService.showMessage('error', usrDetails['message'])
+        if(user) {
+            this.getApplicantDetails(user._id).subscribe(
+                usrDetails => {
+                    if (usrDetails['success']) {
+                        this.user$.next(usrDetails['response'])
+                    } else {
+                        this.toastService.showMessage('error', usrDetails['message'])
+                    }
                 }
-            }
-        )
+            )
+        }else {
+            // this.router.navigate(['/']);
+            // return
+        }
     }
 
 
@@ -60,8 +65,10 @@ export class AuthService {
         return this.httpClient.get(`${this.apiUrl}/application/applicant-details/${userId}`);
     }
 
-    checkUserOrLogout() {
+    getAuthStatus() {
+        let user = JSON.parse(localStorage.getItem('user'));
 
+        return user ? (user.token ? true : false) : false;
     }
 
     logout() {

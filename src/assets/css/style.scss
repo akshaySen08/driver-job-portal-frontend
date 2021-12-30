@@ -4361,30 +4361,30 @@ Listing Categories Area CSS
             top: 1px;
         }
     }
-    &.bg1 {
-        background-image: url(../../assets/img/categories/img1.jpg);
-    }
-    &.bg2 {
-        background-image: url(../../assets/img/categories/img2.jpg);
-    }
-    &.bg3 {
-        background-image: url(../../assets/img/categories/img3.jpg);
-    }
-    &.bg4 {
-        background-image: url(../../assets/img/categories/img4.jpg);
-    }
-    &.bg5 {
-        background-image: url(../../assets/img/categories/img5.jpg);
-    }
-    &.bg6 {
-        background-image: url(../../assets/img/categories/img6.jpg);
-    }
-    &.bg7 {
-        background-image: url(../../assets/img/categories/img7.jpg);
-    }
-    &.bg8 {
-        background-image: url(../../assets/img/categories/img8.jpg);
-    }
+    // &.bg1 {
+    //     background-image: url(../../assets/img/categories/img1.jpg);
+    // }
+    // &.bg2 {
+    //     background-image: url(../../assets/img/categories/img2.jpg);
+    // }
+    // &.bg3 {
+    //     background-image: url(../../assets/img/categories/img3.jpg);
+    // }
+    // &.bg4 {
+    //     background-image: url(../../assets/img/categories/img4.jpg);
+    // }
+    // &.bg5 {
+    //     background-image: url(../../assets/img/categories/img5.jpg);
+    // }
+    // &.bg6 {
+    //     background-image: url(../../assets/img/categories/img6.jpg);
+    // }
+    // &.bg7 {
+    //     background-image: url(../../assets/img/categories/img7.jpg);
+    // }
+    // &.bg8 {
+    //     background-image: url(../../assets/img/categories/img8.jpg);
+    // }
     &:hover, &:focus {
         transform: translateY(-10px);
 
@@ -7538,15 +7538,15 @@ Widget Sidebar CSS
                         repeat: no-repeat;
                         position: center center !important;
                     };
-                    &.bg1 {
-                        background-image: url(../../assets/img/blog/img7.jpg);
-                    }
-                    &.bg2 {
-                        background-image: url(../../assets/img/blog/img8.jpg);
-                    }
-                    &.bg3 {
-                        background-image: url(../../assets/img/blog/img5.jpg);
-                    }
+                    // &.bg1 {
+                    //     background-image: url(../../assets/img/blog/img7.jpg);
+                    // }
+                    // &.bg2 {
+                    //     background-image: url(../../assets/img/blog/img8.jpg);
+                    // }
+                    // &.bg3 {
+                    //     background-image: url(../../assets/img/blog/img5.jpg);
+                    // }
                 }
                 &::before, &::after {
                     transition: all .8s cubic-bezier(.2, 1, .22, 1);

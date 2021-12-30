@@ -36,6 +36,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { ApplicationPageComponent } from './components/pages/application-page/application-page.component';
 import { ApplicationResolver } from './components/resolvers/application.resolver';
 import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
+import { AuthGuard } from './components/services/auth-guard.guard';
 
 const routes: Routes = [
     {
@@ -79,7 +80,8 @@ const routes: Routes = [
         component: ApplicationPageComponent,
         resolve: {
             data: ApplicationResolver
-        }
+        },
+        canActivate: [AuthGuard]
     },
     {
         path: 'thank-you',

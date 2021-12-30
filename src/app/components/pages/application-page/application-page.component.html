@@ -113,7 +113,9 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <button type="button" class="application-btn" (click)="submitBasicForm()">Next <i
+                        <button type="button" class="application-btn" (click)="handleNextPrevious(true)">Next <i
+                            class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="submitBasicForm()">Save and Next <i
                                 class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
@@ -162,7 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> CV:</label>
                             <input type="file" class="form-control" formControlName="cv"
@@ -189,8 +191,10 @@
                     <div class="col-lg-12 col-md-12">
                         <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
                                 class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button type="button" class="application-btn" (click)="submitDocsForm()">Next <i
+                        <button type="button" [disabled]="uploadsEmpty || !docsForm.valid" class="application-btn" (click)="submitDocsForm()">Save and Next <i
                                 class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="handleNextPrevious(true)">Next <i
+                                    class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
             </form>
@@ -278,8 +282,10 @@
                     <div class="col-lg-12 col-md-12">
                         <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
                                 class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button type="button" class="application-btn" (click)="submitQuesForm()">Payment <i
+                        <button type="button" class="application-btn" (click)="submitQuesForm()">Save and go to Payment <i
                                 class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="handleNextPrevious(true)">Next <i
+                            class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
             </form>
