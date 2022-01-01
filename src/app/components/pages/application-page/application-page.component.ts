@@ -157,7 +157,7 @@ export class ApplicationPageComponent implements OnInit {
 
 
     handlepay() {
-        window.location.href = "http://localhost/sadad/sadad.php"
+        window.location.href = "http://allnoob.atwebpages.com/sadad-pay"
     }
 
     formInitialization() {
