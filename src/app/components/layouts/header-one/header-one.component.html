@@ -85,9 +85,25 @@
                             <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About</a></li>
 
                             <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
+
+                            <ng-container *ngIf="!user">
+                                <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/login"><i class='bx bx-log-in'></i> Login</a></li>
+
+                                <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/register"><i class='bx bx-log-in-circle'></i> Register</a></li>
+                            </ng-container>
+
+                            <ng-container *ngIf="user">
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/application-page" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class='bx bxs-user'></i> My Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class='bx bx-log-in'></i> Logout</a>
+                                </li>
+                            </ng-container>
                         </ul>
 
-                        <div class="others-option" *ngIf="!user">
+                        <!-- For desktop -->
+                        <!-- <div class="others-option" *ngIf="!user">
                             <div class="d-flex align-items-center">
                                 <div class="option-item">
                                     <a class="top-links" routerLink="/login"><i class='bx bx-log-in'></i> Login</a>
@@ -110,7 +126,7 @@
                                     <a class="top-links" routerLink="/application-page"><i class='bx bxs-user'></i> My Account</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </nav>
             </div>

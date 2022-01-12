@@ -21,20 +21,47 @@
 
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+                            <li class="nav-item"><a routerLink="/" class="nav-link" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">Home yo</a></li>
 
-                            <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About</a></li>
+                            <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">About</a></li>
 
-                            <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
+                            <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">Contact</a></li>
+
+                            <ng-container *ngIf="!user">
+                                <li class="nav-item">
+                                    <a routerLink="/login" class="nav-link default-btn-account"><i class="bx bx-log-in"></i> Login</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/register" class="nav-link default-btn-account"><i class="bx bx-log-in-circle"></i>
+                                        Register</a>
+                                </li>
+                            </ng-container>
+
+                            <ng-container *ngIf="user">
+                                <li class="nav-item">
+                                    <a (click)="logout()" class="nav-link"><i class="bx bx-log-in"></i> Logout</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/application-page" class="nav-link"><i class="bx bx-log-in-circle"></i>
+                                        My Account</a>
+                                </li>
+                            </ng-container>
                         </ul>
 
-                        <div class="others-option" *ngIf="!user">
+                        <!-- For desktop -->
+                        <!-- <div class="others-option" *ngIf="!user">
                             <div class="d-flex align-items-center">
                                 <div class="option-item">
                                     <a href="/login" class="default-btn"><i class="bx bx-log-in"></i> Login</a>
                                 </div>
                                 <div class="option-item">
-                                    <a href="/register" class="default-btn"><i class="bx bx-log-in-circle"></i> Register</a>
+                                    <a href="/register" class="default-btn"><i class="bx bx-log-in-circle"></i>
+                                        Register</a>
                                 </div>
                             </div>
                         </div>
@@ -44,10 +71,11 @@
                                     <a (click)="logout()" class="default-btn"><i class="bx bx-log-in"></i> Logout</a>
                                 </div>
                                 <div class="option-item">
-                                    <a href="/application-page" class="default-btn"><i class="bx bx-log-in-circle"></i> My Account</a>
+                                    <a href="/application-page" class="default-btn"><i class="bx bx-log-in-circle"></i>
+                                        My Account</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </nav>
             </div>

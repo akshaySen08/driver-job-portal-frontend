@@ -7,8 +7,15 @@ a {
 a:hover {
     color: #088dd3;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .option-item a {
     cursor: pointer;
 }
+
+
+a.active {
+    color: #088dd3 !important;
+}
+
