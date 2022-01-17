@@ -32,9 +32,10 @@
                                     <input type="password" placeholder="Confirm Your Password" formControlName="cpassword" class="form-control">
                                 </div>
 
-                                <button type="submit" [disabled]="registerForm.invalid">Signup</button>
+                                <button *ngIf="showSignupBtn" type="submit" [disabled]="registerForm.invalid">Signup</button>
                             </form>
                         </div>
+                        <app-captcha (captchaEvent)="captchaEventHandler($event)"></app-captcha>
                     </div>
                 </div>
             </div>

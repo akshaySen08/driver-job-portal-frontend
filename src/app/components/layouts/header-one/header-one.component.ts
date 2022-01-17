@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApplicationService } from '../../services/application.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,18 +9,12 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderOneComponent implements OnInit {
 
-    constructor(private authService: AuthService) { }
+    constructor(private applicationService: ApplicationService, private authService: AuthService) { }
 
     user;
 
     ngOnInit(): void {
-        this.authService.user$.subscribe(user => {
-            this.user = user
-            console.log({
-                user
-            });
-
-        })
+        this.user = this.applicationService.getUser();
     }
 
 

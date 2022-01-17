@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     registerForm: FormGroup
+    showSignupBtn: boolean = false
 
     ngOnInit(): void {
         this.initializeForm();
@@ -56,5 +57,9 @@ export class RegisterComponent implements OnInit {
                 }
             }
         )
+    }
+
+    captchaEventHandler(event) {
+        this.showSignupBtn = event
     }
 }

@@ -27,6 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApplicationPageComponent } from './components/pages/application-page/application-page.component';
 import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
 import { AuthGuard } from './components/services/auth-guard.guard';
+import { CaptchaComponent } from './components/common/captcha/captcha.component';
+import { WaitForReplyComponent } from './components/pages/wait-for-reply/wait-for-reply.component';
+import { ApplicationCompletedGuard } from './components/services/check-application-complete.guard';
 
 @NgModule({
     declarations: [
@@ -47,7 +50,9 @@ import { AuthGuard } from './components/services/auth-guard.guard';
         ComingSoonComponent,
         AboutComponent,
         ApplicationPageComponent,
-        ThankYouComponent
+        ThankYouComponent,
+        CaptchaComponent,
+        WaitForReplyComponent
     ],
     imports: [
         BrowserModule,
@@ -60,7 +65,8 @@ import { AuthGuard } from './components/services/auth-guard.guard';
     ],
     providers: [
         CustomValidationService,
-        AuthGuard
+        AuthGuard,
+        ApplicationCompletedGuard
     ],
     bootstrap: [AppComponent]
 })

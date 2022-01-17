@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { ApplicationService } from "../../services/application.service";
 import { AuthService } from "../../services/auth.service";
@@ -16,7 +17,8 @@ export class ApplicationPageComponent implements OnInit {
         private fb: FormBuilder,
         private applicationService: ApplicationService,
         private authService: AuthService,
-        private toast: ToastMessagesService
+        private toast: ToastMessagesService,
+        private router: Router
     ) {
 
     }
@@ -49,7 +51,6 @@ export class ApplicationPageComponent implements OnInit {
             this.initDocsform(this.user);
             this.initQuesForm(this.user)
         })
-
     }
 
     /* Basic info form */
@@ -103,7 +104,6 @@ export class ApplicationPageComponent implements OnInit {
         this.applicationService.submitDocs(formData, this.user._id).subscribe(
             res => {
                 if (res['success']) {
-                    console.log({ res });
                     this.activeFormIndex++
                     this.formInitialization();
                 } else {
@@ -132,7 +132,6 @@ export class ApplicationPageComponent implements OnInit {
         this.applicationService.submitBasicInfo(this.quesForm.getRawValue(), this.user._id).subscribe(
             res => {
                 if (res['success']) {
-                    console.log({ res });
                     this.activeFormIndex++
                     this.formInitialization();
                 } else {
@@ -149,7 +148,6 @@ export class ApplicationPageComponent implements OnInit {
 
     uploadsEmpty: boolean;
     imageHandler(event: any, type) {
-        console.log(event.target.files[0]);
         this.uploads[type] = event.target.files[0]
         this.uploadsEmpty = Object.values(this.uploads).some(x => x == null && x == '');
     }

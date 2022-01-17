@@ -37,6 +37,8 @@ import { ApplicationPageComponent } from './components/pages/application-page/ap
 import { ApplicationResolver } from './components/resolvers/application.resolver';
 import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
 import { AuthGuard } from './components/services/auth-guard.guard';
+import { WaitForReplyComponent } from './components/pages/wait-for-reply/wait-for-reply.component';
+import { ApplicationCompletedGuard } from './components/services/check-application-complete.guard';
 
 const routes: Routes = [
     {
@@ -81,11 +83,15 @@ const routes: Routes = [
         resolve: {
             data: ApplicationResolver
         },
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, ApplicationCompletedGuard]
     },
     {
         path: 'thank-you',
         component: ThankYouComponent
+    },
+    {
+        path: 'wait-for-reply',
+        component: WaitForReplyComponent
     },
     { path: '**', component: ErrorComponent }
 ];

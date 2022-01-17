@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
     loginForm: FormGroup;
+    showLoginBtn: boolean;
 
     ngOnInit(): void {
 
@@ -47,6 +48,11 @@ export class LoginComponent implements OnInit {
             this.authService.login(this.loginForm.getRawValue()).subscribe(
                 res => {
                     if (res['success']) {
+                        /* if application is completed and payment is done we will take to please wait for admin reply page */
+                        // if(res['response'].application_completed) {
+                        //     this.router.navigate(['/wait-for-reply'])
+                        // }else {
+                        // }
                         this.router.navigate(['/application-page'])
                     } else {
                         this.toastMessageService.showMessage('error', res['message'])
@@ -56,6 +62,15 @@ export class LoginComponent implements OnInit {
 
         } catch (error) {
             console.log({ error });
+        }
+    }
+
+    captchaEventHandler(event) {
+        this.showLoginBtn = event
+        if(event) {
+            this.loginHandler()
+        }else {
+            this.toastMessageService.showMessage('error', 'Something went worng')
         }
     }
 }

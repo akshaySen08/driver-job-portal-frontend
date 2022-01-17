@@ -18,7 +18,7 @@
                             <h3>Welcome Back</h3>
                             <p>New user? <a routerLink="/register">Sign up</a></p>
 
-                            <form [formGroup]="loginForm" (ngSubmit)="loginHandler()">
+                            <form [formGroup]="loginForm">
                                 <div class="form-group">
                                     <input type="email" placeholder="Your Email Address" class="form-control" formControlName="email">
                                 </div>
@@ -27,13 +27,14 @@
                                     <input type="password" placeholder="Your Password" class="form-control" formControlName="password">
                                 </div>
 
-                                <button type="submit">Login</button>
+                                <!-- <button *ngIf="showLoginBtn" type="submit">Login</button> -->
 
                                 <!-- <div class="forgot-password">
                                     <a routerLink="/">Forgot Password?</a>
                                 </div> -->
                             </form>
                         </div>
+                        <app-captcha (captchaEvent)="captchaEventHandler($event)"></app-captcha>
                     </div>
                 </div>
             </div>
