@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidationService } from 'src/app/helpers/custom-validation.service';
 import { AuthService } from '../../services/auth.service';
+import { ToastMessagesService } from '../../services/toast-messages.service';
 
 @Component({
     selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
         private customValidation: CustomValidationService,
         private authService: AuthService,
         private toastr: ToastrService,
+        private toastMessageService: ToastMessagesService,
         private router: Router
     ) { }
 
@@ -61,5 +63,10 @@ export class RegisterComponent implements OnInit {
 
     captchaEventHandler(event) {
         this.showSignupBtn = event
+        if(event) {
+            this.signUp()
+        }else {
+            this.toastMessageService.showMessage('error', 'Something went worng')
+        }
     }
 }

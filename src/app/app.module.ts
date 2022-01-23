@@ -30,6 +30,7 @@ import { AuthGuard } from './components/services/auth-guard.guard';
 import { CaptchaComponent } from './components/common/captcha/captcha.component';
 import { WaitForReplyComponent } from './components/pages/wait-for-reply/wait-for-reply.component';
 import { ApplicationCompletedGuard } from './components/services/check-application-complete.guard';
+import { PaymentUnsuccessfullComponent } from './components/pages/payment-unsuccessfull/payment-unsuccessfull';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { ApplicationCompletedGuard } from './components/services/check-applicati
         ApplicationPageComponent,
         ThankYouComponent,
         CaptchaComponent,
-        WaitForReplyComponent
+        WaitForReplyComponent,
+        PaymentUnsuccessfullComponent
     ],
     imports: [
         BrowserModule,

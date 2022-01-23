@@ -39,6 +39,7 @@ import { ThankYouComponent } from './components/pages/thank-you/thank-you.compon
 import { AuthGuard } from './components/services/auth-guard.guard';
 import { WaitForReplyComponent } from './components/pages/wait-for-reply/wait-for-reply.component';
 import { ApplicationCompletedGuard } from './components/services/check-application-complete.guard';
+import { PaymentUnsuccessfullComponent } from './components/pages/payment-unsuccessfull/payment-unsuccessfull';
 
 const routes: Routes = [
     {
@@ -92,6 +93,10 @@ const routes: Routes = [
     {
         path: 'wait-for-reply',
         component: WaitForReplyComponent
+    },
+    {
+        path: 'payment-unsuccessful',
+        component: PaymentUnsuccessfullComponent
     },
     { path: '**', component: ErrorComponent }
 ];
