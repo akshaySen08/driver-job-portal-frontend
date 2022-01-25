@@ -12,7 +12,7 @@
                     <div class="d-table-cell">
                         <div class="login-form">
                             <div class="logo">
-                                <a routerLink="/"><img src="assets/img/black-logo.png" alt="image"></a>
+                                <a routerLink="/"><img src="assets/img/logos/logo-light.png" alt="image"></a>
                             </div>
 
                             <h3>Welcome Back</h3>
@@ -34,7 +34,7 @@
                                 </div> -->
                             </form>
                         </div>
-                        <app-captcha (captchaEvent)="captchaEventHandler($event)"></app-captcha>
+                        <app-captcha [buttonName]="buttonName" (captchaEvent)="captchaEventHandler($event)"></app-captcha>
                     </div>
                 </div>
             </div>

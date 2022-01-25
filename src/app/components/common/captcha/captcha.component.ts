@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 
 @Component({
@@ -12,6 +12,7 @@ export class CaptchaComponent implements OnInit {
     }
 
     @Output() captchaEvent = new EventEmitter<boolean>()
+    @Input() buttonName: string;
 
     captcha: any;
     alphabets = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";

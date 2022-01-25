@@ -554,3 +554,12 @@ $transition: 0.5s;
 .upload-container img {
     width: 220px;
 }
+
+
+.phone-container {
+    display: flex;
+}
+
+.phone-container .nice-select.form-control {
+    width: 50%;
+}

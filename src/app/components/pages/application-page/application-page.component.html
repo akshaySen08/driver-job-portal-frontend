@@ -25,6 +25,14 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
+                            <label><i class='bx bx-location-plus'></i> Passport Number:</label>
+                            <input type="text" class="form-control" placeholder="Valid Passport Number"
+                                formControlName="passport_number">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
                             <label><i class='bx bx-briefcase-alt'></i> Last Name:</label>
                             <input type="text" class="form-control" placeholder="Legal Last Name"
                                 formControlName="last_name">
@@ -48,24 +56,49 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Phone Number:</label>
-                            <input type="text" class="form-control" placeholder="Phone number"
-                                formControlName="phone_number">
+                            <div class="phone-container">
+                                <input list="countryCodePhone1" class="form-control" formControlName="countryCodePhone">
+                                <datalist id="countryCodePhone1">
+                                    <ng-container *ngFor="let c of countries">
+                                        <option [value]="c.code">{{c.countryName}}</option>
+                                    </ng-container>
+                                </datalist>
+                                <input type="text" class="form-control" placeholder="Phone number"
+                                    formControlName="phone_number">
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Whatsapp Number:</label>
-                            <input type="text" class="form-control" placeholder="Whatsapp number"
-                                formControlName="whatsapp_number">
+                            <!-- All countries -->
+                            <div class="phone-container">
+                                <input list="countryCodeWhats2" class="form-control" formControlName="countryCodeWhats">
+                                <datalist id="countryCodeWhats2">
+                                    <ng-container *ngFor="let c of countries">
+                                        <option [value]="c.code">{{c.countryName}}</option>
+                                    </ng-container>
+                                </datalist>
+                                <input type="text" class="form-control" placeholder="Whatsapp number"
+                                    formControlName="whatsapp_number">
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Emergency Phone Number:</label>
-                            <input type="text" class="form-control" placeholder="Emergency Phone number"
-                                formControlName="emergency_phone_number">
+                            <div class="phone-container">
+                                <input list="countryCodeEmergency3" class="form-control" formControlName="countryCodeEmergency">
+                                <datalist id="countryCodeEmergency3">
+                                    <ng-container *ngFor="let c of countries">
+                                        <option [value]="c.code">{{c.countryName}}</option>
+                                    </ng-container>
+                                </datalist>
+                                <input type="text" class="form-control" placeholder="Emergency Phone number"
+                                    formControlName="emergency_phone_number">
+                            </div>
                         </div>
                     </div>
 
@@ -84,15 +117,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-12">
-                        <div class="form-group">
-                            <label><i class='bx bx-text'></i> About you:</label>
-                            <textarea formControlName="about_you" class="form-control" id="" cols="30"
-                                rows="3"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label><i class='bx bxs-car'></i> Applying For: {{ user?.applying_for == 1 ? "Car" : "Bike"
                                 }}</label>
@@ -112,9 +137,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label><i class='bx bx-text'></i> About you:</label>
+                            <textarea formControlName="about_you" class="form-control" id="" cols="30"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+
                     <div class="col-lg-12 col-md-12">
                         <button type="button" class="application-btn" (click)="handleNextPrevious(true)">Next <i
-                            class='bx bx-right-arrow-alt'></i></button>
+                                class='bx bx-right-arrow-alt'></i></button>
                         <button type="button" class="application-btn" (click)="submitBasicForm()">Save and Next <i
                                 class='bx bx-right-arrow-alt'></i></button>
                     </div>
@@ -188,13 +222,14 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-12 col-md-12">
                         <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
                                 class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button type="button" [disabled]="uploadsEmpty || !docsForm.valid" class="application-btn" (click)="submitDocsForm()">Save and Next <i
+                        <button type="button" class="application-btn" (click)="submitDocsForm()">Save and Next <i
                                 class='bx bx-right-arrow-alt'></i></button>
                         <button type="button" class="application-btn" (click)="handleNextPrevious(true)">Next <i
-                                    class='bx bx-right-arrow-alt'></i></button>
+                                class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
             </form>
@@ -282,10 +317,10 @@
                     <div class="col-lg-12 col-md-12">
                         <button type="button" class="application-btn" (click)="handleNextPrevious(false)"><i
                                 class='bx bx-left-arrow-alt'></i> Previous </button>
-                        <button type="button" class="application-btn" (click)="submitQuesForm()">Save and go to Payment <i
-                                class='bx bx-right-arrow-alt'></i></button>
+                        <button type="button" class="application-btn" (click)="submitQuesForm()">Save and go to Payment
+                            <i class='bx bx-right-arrow-alt'></i></button>
                         <button type="button" class="application-btn" (click)="handleNextPrevious(true)">Next <i
-                            class='bx bx-right-arrow-alt'></i></button>
+                                class='bx bx-right-arrow-alt'></i></button>
                     </div>
                 </div>
             </form>

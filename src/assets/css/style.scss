@@ -7223,7 +7223,7 @@ Page Title Area CSS
         repeat: no-repeat;
     };
     &.page-title-bg1 {
-        background-image: url(../../assets/img/page-title1.jpg);
+        background-image: url(../../assets/img/island.jpeg);
     }
     &.page-title-bg2 {
         background-image: url(../../assets/img/page-title2.jpg);
@@ -8626,10 +8626,16 @@ Login Area CSS
             right: auto;
         };
         .logo {
-            margin-bottom: 25px;
+            margin-bottom: 0px;
+            display: flex;
+            justify-content: center;
 
             a {
                 display: inline-block;
+            }
+
+            img {
+                width: 30%;
             }
         }
         h3 {
@@ -8795,10 +8801,16 @@ Register Area CSS
             right: auto;
         };
         .logo {
-            margin-bottom: 25px;
+            margin-bottom: 0px;
+            display: flex;
+            justify-content: center;
 
             a {
                 display: inline-block;
+            }
+
+            img {
+                width: 30%;
             }
         }
         h3 {

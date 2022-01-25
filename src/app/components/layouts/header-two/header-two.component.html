@@ -44,7 +44,7 @@
                             <ng-container *ngIf="user">
                                 <li class="nav-item">
                                     <a routerLink="/application-page" class="nav-link"><i class="bx bx-log-in-circle"></i>
-                                        My Account</a>
+                                        {{user.first_name || "My Account"}}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a (click)="logout()" class="nav-link"><i class="bx bx-log-in"></i> Logout</a>

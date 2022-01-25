@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
     registerForm: FormGroup
     showSignupBtn: boolean = false
+    buttonName = "Sign up"
 
     ngOnInit(): void {
         this.initializeForm();

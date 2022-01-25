@@ -94,7 +94,7 @@
 
                             <ng-container *ngIf="user">
                                 <li class="nav-item">
-                                    <a class="nav-link" routerLink="/application-page" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class='bx bxs-user'></i> My Account</a>
+                                    <a class="nav-link" routerLink="/application-page" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class='bx bxs-user'></i> {{user.first_name || "My Account"}}</a>
                                 </li>
                                 <li class="nav-item" (click)="logout()">
                                     <a class="nav-link" ><i class='bx bx-log-in'></i> Logout</a>
