@@ -50,38 +50,47 @@
                     <h3>Drop Us A Line</h3>
                     <p>We're happy to answer any questions you have or provide you with an estimate. Just send us a message in the form below with any questions you may have.</p>
 
-                    <form id="contactForm">
+                    <form id="contactForm" [formGroup]="form">
                         <div class="row">
                             <div class="col-lg-12 col-md-6">
                                 <div class="form-group">
                                     <label>Name <span>*</span></label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Your name">
+                                    <input type="text" formControlName="name" id="name" class="form-control" placeholder="Your name">
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-6">
                                 <div class="form-group">
                                     <label>Email <span>*</span></label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your email address">
+                                    <input type="email" formControlName="email" id="email" class="form-control" placeholder="Your email address">
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
                                     <label>Phone Number <span>*</span></label>
-                                    <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Your phone number">
+                                    <div class="phone-container">
+                                        <input list="countryCode" class="form-control" formControlName="countryCode" >
+                                        <datalist id="countryCode">
+                                            <ng-container *ngFor="let c of countries">
+                                                <option [value]="c.code">{{c.countryName}}</option>
+                                            </ng-container>
+                                        </datalist>
+                                        <input type="text" formControlName="phone" id="phone_number" class="form-control" placeholder="Your phone number">
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
                                     <label>Your Message <span>*</span></label>
-                                    <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Write your message..."></textarea>
+                                    <textarea formControlName="message" id="message" cols="30" rows="5" class="form-control" placeholder="Write your message..."></textarea>
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12">
-                                <button type="submit" class="default-btn">Send Message</button>
+                                <!-- <button type="submit" class="default-btn">Send Message</button> -->
+                                <app-captcha buttonName="Submit" (captchaEvent)="submitForm()"></app-captcha>
                             </div>
                         </div>
                     </form>

@@ -40,6 +40,7 @@ import { AuthGuard } from './components/services/auth-guard.guard';
 import { WaitForReplyComponent } from './components/pages/wait-for-reply/wait-for-reply.component';
 import { ApplicationCompletedGuard } from './components/services/check-application-complete.guard';
 import { PaymentUnsuccessfullComponent } from './components/pages/payment-unsuccessfull/payment-unsuccessfull';
+import { ForgetPwdComponent } from './components/pages/forget-password/forget-password';
 
 const routes: Routes = [
     {
@@ -71,6 +72,9 @@ const routes: Routes = [
         path: 'register', component: RegisterComponent, resolve: {
             data: ApplicationResolver
         }
+    },
+    {
+        path: 'forget-password', component: ForgetPwdComponent
     },
     {
         path: 'contact', component: ContactComponent, resolve: {

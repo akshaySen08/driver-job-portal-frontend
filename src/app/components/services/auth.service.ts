@@ -39,7 +39,7 @@ export class AuthService {
 
     public setUser() {
         let user = JSON.parse(localStorage.getItem('user'));
-        if(user) {
+        if (user) {
             this.getApplicantDetails(user._id).subscribe(
                 usrDetails => {
                     if (usrDetails['success']) {
@@ -49,7 +49,7 @@ export class AuthService {
                     }
                 }
             )
-        }else {
+        } else {
             // this.router.navigate(['/']);
             // return
         }
@@ -69,6 +69,18 @@ export class AuthService {
         let user = JSON.parse(localStorage.getItem('user'));
 
         return user ? (user.token ? true : false) : false;
+    }
+
+    forgetPwd(data) {
+        return this.httpClient.post(`${this.apiUrl}/auth/forget-password`, data)
+    }
+
+    submitOtp(data) {
+        return this.httpClient.post(`${this.apiUrl}/auth/check-otp`, data)
+    }
+
+    changePwd(data) {
+        return this.httpClient.post(`${this.apiUrl}/auth/change-password`, data)
     }
 
     logout() {

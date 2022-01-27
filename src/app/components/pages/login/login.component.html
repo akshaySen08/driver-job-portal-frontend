@@ -2,7 +2,8 @@
     <div class="row m-0">
         <div class="col-lg-6 col-md-12 p-0">
             <div class="login-image">
-                <img src="https://picsum.photos/1200/1400" alt="image">
+                <!-- <img src="https://picsum.photos/1200/1400" alt="image"> -->
+                <img src="assets/img/talbat_boy.jpeg" alt="image">
             </div>
         </div>
 
@@ -29,9 +30,9 @@
 
                                 <!-- <button *ngIf="showLoginBtn" type="submit">Login</button> -->
 
-                                <!-- <div class="forgot-password">
-                                    <a routerLink="/">Forgot Password?</a>
-                                </div> -->
+                                <div class="forgot-password">
+                                    <a routerLink="/forget-password">Forgot Password?</a>
+                                </div>
                             </form>
                         </div>
                         <app-captcha [buttonName]="buttonName" (captchaEvent)="captchaEventHandler($event)"></app-captcha>

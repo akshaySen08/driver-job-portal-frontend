@@ -23,7 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApplicationPageComponent } from './components/pages/application-page/application-page.component';
 import { ThankYouComponent } from './components/pages/thank-you/thank-you.component';
 import { AuthGuard } from './components/services/auth-guard.guard';
@@ -31,6 +31,8 @@ import { CaptchaComponent } from './components/common/captcha/captcha.component'
 import { WaitForReplyComponent } from './components/pages/wait-for-reply/wait-for-reply.component';
 import { ApplicationCompletedGuard } from './components/services/check-application-complete.guard';
 import { PaymentUnsuccessfullComponent } from './components/pages/payment-unsuccessfull/payment-unsuccessfull';
+import { InterceptorService } from './components/services/auth-interceptor.service';
+import { ForgetPwdComponent } from './components/pages/forget-password/forget-password';
 
 @NgModule({
     declarations: [
@@ -54,7 +56,8 @@ import { PaymentUnsuccessfullComponent } from './components/pages/payment-unsucc
         ThankYouComponent,
         CaptchaComponent,
         WaitForReplyComponent,
-        PaymentUnsuccessfullComponent
+        PaymentUnsuccessfullComponent,
+        ForgetPwdComponent
     ],
     imports: [
         BrowserModule,
@@ -68,7 +71,12 @@ import { PaymentUnsuccessfullComponent } from './components/pages/payment-unsucc
     providers: [
         CustomValidationService,
         AuthGuard,
-        ApplicationCompletedGuard
+        ApplicationCompletedGuard,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorService,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

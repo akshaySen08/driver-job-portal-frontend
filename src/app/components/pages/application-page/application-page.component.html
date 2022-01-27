@@ -17,7 +17,7 @@
                     <h3>Basic Informations</h3>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> First Name:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> First Name<span>*</span> :</label>
                             <input type="text" class="form-control" placeholder="Legal First Name"
                                 formControlName="first_name">
                         </div>
@@ -25,7 +25,7 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-location-plus'></i> Passport Number:</label>
+                            <label><i class='bx bx-location-plus'></i> Passport Number<span>*</span> :</label>
                             <input type="text" class="form-control" placeholder="Valid Passport Number"
                                 formControlName="passport_number">
                         </div>
@@ -33,7 +33,7 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> Last Name:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> Last Name<span>*</span> :</label>
                             <input type="text" class="form-control" placeholder="Legal Last Name"
                                 formControlName="last_name">
                         </div>
@@ -41,21 +41,21 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-calendar'></i> Date of Birth:</label>
+                            <label><i class='bx bx-calendar'></i> Date of Birth<span>*</span> :</label>
                             <input type="date" class="form-control" formControlName="dob">
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-calendar'></i> Nationality:</label>
+                            <label><i class='bx bx-calendar'></i> Nationality<span>*</span> :</label>
                             <input type="text" class="form-control" formControlName="nationality">
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-phone-call'></i> Phone Number:</label>
+                            <label><i class='bx bx-phone-call'></i> Phone Number<span>*</span> :</label>
                             <div class="phone-container">
                                 <input list="countryCodePhone1" class="form-control" formControlName="countryCodePhone">
                                 <datalist id="countryCodePhone1">
@@ -71,7 +71,7 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-phone-call'></i> Whatsapp Number:</label>
+                            <label><i class='bx bx-phone-call'></i> Whatsapp Number<span>*</span> :</label>
                             <!-- All countries -->
                             <div class="phone-container">
                                 <input list="countryCodeWhats2" class="form-control" formControlName="countryCodeWhats">
@@ -88,7 +88,7 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-phone-call'></i> Emergency Phone Number:</label>
+                            <label><i class='bx bx-phone-call'></i> Emergency Phone Number<span>*</span> :</label>
                             <div class="phone-container">
                                 <input list="countryCodeEmergency3" class="form-control" formControlName="countryCodeEmergency">
                                 <datalist id="countryCodeEmergency3">
@@ -104,14 +104,14 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bxs-envelope'></i> Email:</label>
+                            <label><i class='bx bxs-envelope'></i> Email<span>*</span> :</label>
                             <input type="text" class="form-control" placeholder="Email" formControlName="email">
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-location-plus'></i> Address:</label>
+                            <label><i class='bx bx-location-plus'></i> Address<span>*</span> :</label>
                             <input type="text" class="form-control" placeholder="Leagal Address"
                                 formControlName="address">
                         </div>
@@ -119,8 +119,7 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bxs-car'></i> Applying For: {{ user?.applying_for == 1 ? "Car" : "Bike"
-                                }}</label>
+                            <label><i class='bx bxs-car'></i> Applying For<span>*</span> :</label>
                             <div class="row">
                                 <div class="add-list-media-header">
                                     <label class="radio">
@@ -140,7 +139,7 @@
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label><i class='bx bx-text'></i> About you:</label>
+                            <label><i class='bx bx-text'></i> About you<span>*</span> :</label>
                             <textarea formControlName="about_you" class="form-control" id="" cols="30"
                                 rows="3"></textarea>
                         </div>
@@ -160,7 +159,7 @@
                     <h3>Documents Required</h3>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> Pasport Copy:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> Pasport Copy<span>*</span> :</label>
                             <input type="file" class="form-control" formControlName="passport_copy"
                                 (change)="imageHandler($event, 'passport_copy')">
                             <div class="upload-container" *ngIf="user.passport_copy">
@@ -170,7 +169,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> Photo:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> Photo<span>*</span> :</label>
                             <input type="file" class="form-control" formControlName="photo"
                                 (change)="imageHandler($event, 'photo')">
                             <div class="upload-container" *ngIf="user.photo">
@@ -180,7 +179,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> Driving Liscense:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> Driving Liscense<span>*</span> :</label>
                             <input type="file" class="form-control" formControlName="driver_liscense"
                                 (change)="imageHandler($event, 'driver_liscense')">
                             <div class="upload-container" *ngIf="user.driver_liscense">
@@ -190,7 +189,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> Driving Liscense GCC:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> Driving Liscense GCC<span>*</span> :</label>
                             <input type="file" class="form-control" formControlName="driver_liscense_gcc"
                                 (change)="imageHandler($event, 'driver_liscense_gcc')">
                             <div class="upload-container" *ngIf="user.driver_liscense_gcc">
@@ -200,7 +199,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> CV:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> CV<span>*</span> :</label>
                             <input type="file" class="form-control" formControlName="cv"
                                 (change)="imageHandler($event, 'cv')">
                             <div class="upload-container" *ngIf="user.cv">
@@ -210,7 +209,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> Driving Video:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> Driving Video<span>*</span> :</label>
                             <input type="file" class="form-control" formControlName="driving_video"
                                 (change)="imageHandler($event, 'driving_video')">
                             <div class="upload-container" *ngIf="user.driving_video">
@@ -364,7 +363,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label><i class='bx bx-briefcase-alt'></i> First Name:</label>
+                            <label><i class='bx bx-briefcase-alt'></i> First Name<span>*</span> :</label>
                             <input type="text" class="form-control" placeholder="Legal First Name" formControlName="cronic_illness">
                         </div>
                     </div>

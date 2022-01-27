@@ -39,4 +39,8 @@ export class ApplicationService {
             userId
         })
     }
+
+    submitEnquiry(data) {
+        return this.httpClient.post(`${this.apiUrl}/enquiry`, data)
+    }
 }
