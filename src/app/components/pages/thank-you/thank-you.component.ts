@@ -17,7 +17,8 @@ export class ThankYouComponent implements OnInit {
             this.appService.updatePamyentInfo(user._id).subscribe(
                 res => {
                     if(res['success']) {
-                        console.log('Payment Done')
+                        user.application_completed = true
+                        localStorage.setItem('user', JSON.stringify(user))
                     }else{
                         console.log('Payment not done')
                     }

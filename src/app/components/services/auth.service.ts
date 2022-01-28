@@ -83,6 +83,12 @@ export class AuthService {
         return this.httpClient.post(`${this.apiUrl}/auth/change-password`, data)
     }
 
+    checkPayment(){
+        this.user$.subscribe(user => {
+            return user['payment_status']
+        })
+    }
+
     logout() {
         localStorage.removeItem('user');
         this.router.navigate(['/'])
