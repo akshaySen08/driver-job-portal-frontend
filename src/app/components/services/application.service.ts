@@ -34,9 +34,10 @@ export class ApplicationService {
         return JSON.parse(localStorage.getItem('user'))
     }
 
-    updatePamyentInfo(userId){
+    updatePamyentInfo(userId, hashedString){
         return this.httpClient.post(`${this.apiUrl}/update-pay`, {
-            userId
+            userId,
+            hashedString
         })
     }
 
