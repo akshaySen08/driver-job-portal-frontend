@@ -350,17 +350,23 @@ export class ApplicationPageComponent implements OnInit {
             driving_video: ['', Validators.required],
             photo: ['', Validators.required],
             driver_liscense: ['', Validators.required],
-            driver_liscense_gcc: ['', Validators.required],
+            driver_liscense_gcc: [''],
             cv: ['', Validators.required],
         })
     }
     submitDocsForm() {
         const formData = new FormData()
-        const allUploaded = Object.values(this.uploads).every(img => img != '');
-        if (!allUploaded) {
+        // const allUploaded = Object.values(this.uploads).every(img => img != '');
+        if(!this.uploads.passport_copy ||
+        !this.uploads.driving_video ||
+        !this.uploads.photo ||
+        !this.uploads.driver_liscense ||
+        !this.uploads.cv) {
             this.toast.showMessage('error', 'Please upload all required documents.')
             return
         }
+        // if (!allUploaded) {
+        // }
         for (const key in this.uploads) {
             formData.append(key, this.uploads[key])
         }
