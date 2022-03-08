@@ -362,7 +362,7 @@ export class ApplicationPageComponent implements OnInit {
         !this.uploads.photo ||
         !this.uploads.driver_liscense ||
         !this.uploads.cv) {
-            this.toast.showMessage('error', 'Please upload all required documents.')
+            this.toast.showMessage('error', 'Please upload all required documents or click Next.')
             return
         }
         // if (!allUploaded) {

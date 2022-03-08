@@ -254,7 +254,7 @@
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Phone Number<span>*</span> :</label>
                             <div class="phone-container">
-                                <input list="countryCodePhone1" class="form-control countrycode"
+                                <input maxlength="5" list="countryCodePhone1" class="form-control countrycode"
                                     formControlName="countryCodePhone">
                                 <datalist id="countryCodePhone1">
                                     <ng-container *ngFor="let c of countries">
@@ -272,7 +272,7 @@
                             <label><i class='bx bx-phone-call'></i> Whatsapp Number<span>*</span> :</label>
                             <!-- All countries -->
                             <div class="phone-container">
-                                <input list="countryCodeWhats2" class="form-control countrycode"
+                                <input maxlength="5" list="countryCodeWhats2" class="form-control countrycode"
                                     formControlName="countryCodeWhats">
                                 <datalist id="countryCodeWhats2">
                                     <ng-container *ngFor="let c of countries">
@@ -289,7 +289,7 @@
                         <div class="form-group">
                             <label><i class='bx bx-phone-call'></i> Emergency Phone Number<span>*</span> :</label>
                             <div class="phone-container">
-                                <input list="countryCodeEmergency3" class="form-control countrycode"
+                                <input maxlength="5" list="countryCodeEmergency3" class="form-control countrycode"
                                     formControlName="countryCodeEmergency">
                                 <datalist id="countryCodeEmergency3">
                                     <ng-container *ngFor="let c of countries">
